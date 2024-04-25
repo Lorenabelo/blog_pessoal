@@ -1,3 +1,4 @@
+import { Usuario } from './../../usuario/entities/usuario.entity';
 import { Transform, TransformFnParams } from 'class-transformer';
 import { IsNotEmpty } from 'class-validator';
 import {
@@ -31,4 +32,9 @@ export class Postagem {
     onDelete: 'CASCADE',
   })
   tema: Tema;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.postagem, {
+    onDelete: 'CASCADE',
+  })
+  usuario: Usuario;
 }
